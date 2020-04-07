@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c0e5263c-a89a-4195-b3d8-dcc674a0fcfb" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/bledevice/GeneralServices/BatteryService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/7c/acc048ca/IDevice1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/Microbit/Services/IoPinService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/7f/d10b7748/Device1Properties.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A3E25C85-3B3E-4EC2-822C-F20C1C385045/A/HashSet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/GeneralServices/DeviceInformationService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/cc/8b328c23/IGattService1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/PowerUp/Protocol/Message.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/ba/4be36bd1/IAdapter1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/BleDevice.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/8d/e1959b2f/IGattCharacteristic1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/23/a9b05116/GattCharacteristicEventHandlerAsync.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/Microbit/Services/LedService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/Microbit/Services/AccelerometerService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/PowerUp/Hubs/LPF2Hub.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/GeneralServices/GattService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92882F58-11D9-44E2-9819-BF62BA26EB87/5B/BitConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/PowerUp/Devices/LPF2Device.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/a3/5654c688/GattCharacteristic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92882F58-11D9-44E2-9819-BF62BA26EB87/CA/TimeSpan.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/PowerUp/Devices/LPF2DeviceType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92882F58-11D9-44E2-9819-BF62BA26EB87/C0/Span.Fast.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/67/0c11f3d4/GattCharacteristicValueEventArgs.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/47/cf2f8912/BlueZManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/Microbit/Services/ButtonService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bledevice/Microbit/Microbit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/92882F58-11D9-44E2-9819-BF62BA26EB87/50/2e610e7f/AsyncCallback.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/37/6a7ad9f1/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bletest/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92882F58-11D9-44E2-9819-BF62BA26EB87/163/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB011694-AEBE-4F45-BC28-7F88036DCC08/d4/bf3a33f3/Device1Extensions.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/microbit/Class1.cs" />
+        <option value="$PROJECT_DIR$/microbit/IoPinService.cs" />
+        <option value="$PROJECT_DIR$/microbit/Services/IoPinService.cs" />
+        <option value="$PROJECT_DIR$/microbit/Services/DeviceInformationService.cs" />
+        <option value="$PROJECT_DIR$/microbit/Services/GattService.cs" />
+        <option value="$PROJECT_DIR$/microbit/Services/ButtonService.cs" />
+        <option value="$PROJECT_DIR$/microbit/BleDevice.cs" />
+        <option value="$PROJECT_DIR$/microbit/Services/BatteryService.cs" />
+        <option value="$PROJECT_DIR$/microbit/Services/LedService.cs" />
+        <option value="$PROJECT_DIR$/microbit/Microbit.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Services/BatteryService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Services/DeviceInformationService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Services/GattService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/GeneralServices/GattService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/GeneralServices/BatteryService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/GeneralServices/DeviceInformationService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Services/ButtonService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Services/IoPinService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Services/LedService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Microbit.cs" />
+        <option value="$PROJECT_DIR$/bledevice/MicrobitServices/AccelerometerService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/MicrobitServices/ButtonService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/MicrobitServices/IoPinService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/MicrobitServices/LedService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/BaseHub.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/BaseHub.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Microbit/AccelerometerService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Microbit/ButtonService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Microbit/IoPinService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Microbit/LedService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/Microbit/Microbit.cs" />
+        <option value="$PROJECT_DIR$/bletest/Program.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Lpf2AllService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Lpf2HubService.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Message.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Protocol/Message.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Hub/Lpf2Hub.cs" />
+        <option value="$PROJECT_DIR$/bledevice/BleDevice.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/LPF2Device.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Hub/LPF2Hub.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Hubs/LPF2Hub.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Devices/LPF2DeviceType.cs" />
+        <option value="$PROJECT_DIR$/bledevice/PowerUp/Devices/LPF2Device.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Zyh2J3KE7xp2UMqbtqp0FU7EXu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+  </component>
+  <component name="RunManager">
+    <configuration name="bletest" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/bletest/bletest.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c0e5263c-a89a-4195-b3d8-dcc674a0fcfb" name="Default Changelist" comment="" />
+      <created>1585817033146</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585817033146</updated>
+      <workItem from="1585817036190" duration="838000" />
+      <workItem from="1585819129094" duration="4799000" />
+      <workItem from="1585841583846" duration="31268000" />
+      <workItem from="1585932904318" duration="7545000" />
+      <workItem from="1586013656144" duration="18457000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="WindowStateProjectService">
+    <state width="1621" height="329" key="GridCell.Tab.0.bottom" timestamp="1586161526120">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.0.bottom/0.23.1920.988@0.23.1920.988" timestamp="1586161526120" />
+    <state width="1621" height="329" key="GridCell.Tab.0.center" timestamp="1586161526120">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.0.center/0.23.1920.988@0.23.1920.988" timestamp="1586161526120" />
+    <state width="1621" height="329" key="GridCell.Tab.0.left" timestamp="1586161526120">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.0.left/0.23.1920.988@0.23.1920.988" timestamp="1586161526120" />
+    <state width="1621" height="329" key="GridCell.Tab.0.right" timestamp="1586161526120">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.0.right/0.23.1920.988@0.23.1920.988" timestamp="1586161526120" />
+    <state width="1621" height="329" key="GridCell.Tab.1.bottom" timestamp="1586161526121">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.1.bottom/0.23.1920.988@0.23.1920.988" timestamp="1586161526121" />
+    <state width="1621" height="329" key="GridCell.Tab.1.center" timestamp="1586161526121">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.1.center/0.23.1920.988@0.23.1920.988" timestamp="1586161526121" />
+    <state width="1621" height="329" key="GridCell.Tab.1.left" timestamp="1586161526121">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.1.left/0.23.1920.988@0.23.1920.988" timestamp="1586161526121" />
+    <state width="1621" height="329" key="GridCell.Tab.1.right" timestamp="1586161526121">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.1.right/0.23.1920.988@0.23.1920.988" timestamp="1586161526121" />
+    <state width="1621" height="329" key="GridCell.Tab.2.bottom" timestamp="1586161526122">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.2.bottom/0.23.1920.988@0.23.1920.988" timestamp="1586161526122" />
+    <state width="1621" height="329" key="GridCell.Tab.2.center" timestamp="1586161526121">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.2.center/0.23.1920.988@0.23.1920.988" timestamp="1586161526121" />
+    <state width="1621" height="329" key="GridCell.Tab.2.left" timestamp="1586161526121">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.2.left/0.23.1920.988@0.23.1920.988" timestamp="1586161526121" />
+    <state width="1621" height="329" key="GridCell.Tab.2.right" timestamp="1586161526122">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.2.right/0.23.1920.988@0.23.1920.988" timestamp="1586161526122" />
+    <state width="1621" height="329" key="GridCell.Tab.3.bottom" timestamp="1586161526122">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.3.bottom/0.23.1920.988@0.23.1920.988" timestamp="1586161526122" />
+    <state width="1621" height="329" key="GridCell.Tab.3.center" timestamp="1586161526122">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.3.center/0.23.1920.988@0.23.1920.988" timestamp="1586161526122" />
+    <state width="1621" height="329" key="GridCell.Tab.3.left" timestamp="1586161526122">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.3.left/0.23.1920.988@0.23.1920.988" timestamp="1586161526122" />
+    <state width="1621" height="329" key="GridCell.Tab.3.right" timestamp="1586161526122">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.3.right/0.23.1920.988@0.23.1920.988" timestamp="1586161526122" />
+    <state width="1621" height="329" key="GridCell.Tab.4.bottom" timestamp="1586161526123">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.4.bottom/0.23.1920.988@0.23.1920.988" timestamp="1586161526123" />
+    <state width="1621" height="329" key="GridCell.Tab.4.center" timestamp="1586161526123">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.4.center/0.23.1920.988@0.23.1920.988" timestamp="1586161526123" />
+    <state width="1621" height="329" key="GridCell.Tab.4.left" timestamp="1586161526122">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.4.left/0.23.1920.988@0.23.1920.988" timestamp="1586161526122" />
+    <state width="1621" height="329" key="GridCell.Tab.4.right" timestamp="1586161526123">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state width="1621" height="329" key="GridCell.Tab.4.right/0.23.1920.988@0.23.1920.988" timestamp="1586161526123" />
+    <state x="625" y="255" key="Rider.ProjectTemplateDialog.Size" timestamp="1585823003710">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state x="625" y="255" key="Rider.ProjectTemplateDialog.Size/0.23.1920.988@0.23.1920.988" timestamp="1585823003710" />
+    <state x="887" y="219" key="RiderGenerateDialog" timestamp="1585904435924">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state x="887" y="219" key="RiderGenerateDialog/0.23.1920.988@0.23.1920.988" timestamp="1585904435924" />
+    <state x="512" y="214" key="SettingsEditor" timestamp="1586157643297">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state x="512" y="214" key="SettingsEditor/0.23.1920.988@0.23.1920.988" timestamp="1586157643297" />
+    <state x="688" y="238" width="672" height="678" key="search.everywhere.popup" timestamp="1586100540991">
+      <screen x="0" y="23" width="1920" height="988" />
+    </state>
+    <state x="688" y="238" width="672" height="678" key="search.everywhere.popup/0.23.1920.988@0.23.1920.988" timestamp="1586100540991" />
+  </component>
+</project>

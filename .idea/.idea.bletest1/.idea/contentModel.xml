@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_bletest1.2129795911.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="bledevice" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BleDevice.cs" t="Include" />
+        <e p="bledevice.csproj" t="IncludeRecursive" />
+        <e p="GeneralServices" t="Include">
+          <e p="BatteryService.cs" t="Include" />
+          <e p="DeviceInformationService.cs" t="Include" />
+          <e p="GattService.cs" t="Include" />
+        </e>
+        <e p="Microbit" t="Include">
+          <e p="Microbit.cs" t="Include" />
+          <e p="Services" t="Include">
+            <e p="AccelerometerService.cs" t="Include" />
+            <e p="ButtonService.cs" t="Include" />
+            <e p="IoPinService.cs" t="Include" />
+            <e p="LedService.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="bledevice.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PowerUp" t="Include">
+          <e p="Devices" t="Include">
+            <e p="LPF2Device.cs" t="Include" />
+            <e p="LPF2DeviceType.cs" t="Include" />
+          </e>
+          <e p="Hubs" t="Include">
+            <e p="Lpf2Hub.cs" t="Include" />
+          </e>
+          <e p="Protocol" t="Include">
+            <e p="Message.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="bletest" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bletest.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="bletest.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="bletest1.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
