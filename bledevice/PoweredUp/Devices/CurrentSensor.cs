@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using bledevice.PowerUp.Helpers.DefaultableDictionary;
-using bledevice.PowerUp.Hubs;
-using bledevice.PowerUp.Protocol;
+using bledevice.PoweredUp.Helpers.DefaultableDictionary;
+using bledevice.PoweredUp.Hubs;
+using bledevice.PoweredUp.Protocol;
 
-namespace bledevice.PowerUp.Devices
+namespace bledevice.PoweredUp.Devices
 {
+    /// <summary>
+    /// Current Sensor inside of all Powered Up Hubs
+    /// </summary>
     public class CurrentSensor : LPF2Device, ISensor
     {
         private const byte MODE_CURRENT = 0x00;
@@ -38,6 +41,11 @@ namespace bledevice.PowerUp.Devices
             }
         }
 
+        /// <summary>
+        /// Event handler for current change
+        /// </summary>
+        /// <param name="sender">The sensor which sends the event</param>
+        /// <param name="current">Current value</param>
         public delegate Task CurrentHandler(CurrentSensor sender, double current);
 
         public event CurrentHandler? OnCurrentChange;

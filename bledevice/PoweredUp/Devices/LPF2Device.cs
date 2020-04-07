@@ -1,12 +1,11 @@
-using System;
 using System.Threading.Tasks;
-using bledevice.PowerUp.Hubs;
-using bledevice.PowerUp.Protocol;
+using bledevice.PoweredUp.Hubs;
+using bledevice.PoweredUp.Protocol;
 using Serilog;
 
 // ReSharper disable InconsistentNaming
 
-namespace bledevice.PowerUp.Devices
+namespace bledevice.PoweredUp.Devices
 {
     public class LFP2DeviceError : LPF2Error
     {
@@ -17,13 +16,36 @@ namespace bledevice.PowerUp.Devices
 
     public class LPF2Device
     {
+        /// <summary>
+        /// Device Type
+        /// </summary>
         public LPF2DeviceType Type { get; private set; }
+
+        /// <summary>
+        /// The Hub this device is attached to
+        /// </summary>
         public LPF2Hub Hub { get; private set; }
+
+        /// <summary>
+        /// The port id this device is attached to.
+        /// </summary>
         public int Port { get; private set; }
+
+        /// <summary>
+        /// The port name this device is attached to.
+        /// </summary>
         public string PortName { get; private set; }
+
+        /// <summary>
+        /// Device Mode, different device has different modes
+        /// </summary>
         public byte Mode { get; set; }
+
+        /// <summary>
+        /// True if the device is a virtual port, which is a virtual device combined by 2 devices, i.e. 2 motors
+        /// </summary>
         public bool IsVirtualPort { get; internal set; } = false;
-        
+
         protected bool _connected = false;
         protected bool _buzy = false;
 
@@ -47,25 +69,36 @@ namespace bledevice.PowerUp.Devices
         {
         }
 
+        /// <summary>
+        /// Generic device event handler
+        /// </summary>
+        /// <param name="hub">The Hub the device is attached to</param>
+        /// <param name="device">The device which generated the event</param>
+        /// <param name="portId">The port id</param>
+        /// <param name="mode">Device mode</param>
+        /// <param name="type">Event type</param>
         public delegate Task DeviceEventHandler(LPF2Hub hub, LPF2Device device, int portId, byte mode, byte type);
 
+        /// <summary>
+        /// The device event handler
+        /// </summary>
         public event DeviceEventHandler? OnDeviceEvent = null;
 
-        public async Task Subscribe(DeviceEventHandler handler)
-        {
-            OnDeviceEvent += handler;
-        }
-
-        public async Task Unsubscribe(DeviceEventHandler handler)
-        {
-            OnDeviceEvent -= handler;
-        }
-
+        /// <summary>
+        /// Enable notification for the device, sensors can work only if the notification is enabled
+        /// </summary>
+        /// <param name="mode">Device Mode</param>
+        /// <returns></returns>
         public async Task EnableNotification(byte mode)
         {
             await Hub.EnablePortValueNotification(Port, mode);
         }
 
+        /// <summary>
+        /// Disable notification for the device, sensors will stop working
+        /// </summary>
+        /// <param name="mode">Device Mode</param>
+        /// <returns></returns>
         public async Task DisableNotification(byte mode)
         {
             await Hub.DisablePortValueNotification(Port, mode);

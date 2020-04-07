@@ -31,7 +31,7 @@
             </e>
           </e>
         </e>
-        <e p="PowerUp" t="Include">
+        <e p="PoweredUp" t="Include">
           <e p="Devices" t="Include">
             <e p="AbsoluteMotor.cs" t="Include" />
             <e p="BasicMotor.cs" t="Include" />

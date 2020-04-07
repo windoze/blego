@@ -1,6 +1,4 @@
-using System.Threading.Tasks;
-
-namespace bledevice.PowerUp.Devices
+namespace bledevice.PoweredUp.Devices
 {
     public interface ISensor
     {

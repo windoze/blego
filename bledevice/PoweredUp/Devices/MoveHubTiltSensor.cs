@@ -1,11 +1,13 @@
-using System;
 using System.Threading.Tasks;
-using bledevice.PowerUp.Hubs;
-using bledevice.PowerUp.Protocol;
+using bledevice.PoweredUp.Hubs;
+using bledevice.PoweredUp.Protocol;
 using Serilog;
 
-namespace bledevice.PowerUp.Devices
+namespace bledevice.PoweredUp.Devices
 {
+    /// <summary>
+    /// Tilt Sensor inside of Boost MoveHub
+    /// </summary>
     public class MoveHubTiltSensor : LPF2Device, ITiltSensor
     {
         private const byte MODE_TILT = 0x00;

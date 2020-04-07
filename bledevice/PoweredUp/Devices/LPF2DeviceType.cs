@@ -1,4 +1,4 @@
-namespace bledevice.PowerUp.Devices
+namespace bledevice.PoweredUp.Devices
 {
     // ReSharper disable InconsistentNaming
     public enum LPF2DeviceType

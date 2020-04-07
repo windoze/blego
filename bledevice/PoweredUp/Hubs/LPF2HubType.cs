@@ -1,5 +1,5 @@
 // ReSharper disable InconsistentNaming
-namespace bledevice.PowerUp.Hubs
+namespace bledevice.PoweredUp.Hubs
 {
     public enum LPF2HubType : byte
     {

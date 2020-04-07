@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace bledevice.PowerUp.Helpers
+namespace bledevice.PoweredUp.Helpers
 {
     namespace DefaultableDictionary
     {

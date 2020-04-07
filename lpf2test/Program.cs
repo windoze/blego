@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using bledevice.PowerUp.Devices;
-using bledevice.PowerUp.Hubs;
+using bledevice.PoweredUp.Devices;
+using bledevice.PoweredUp.Hubs;
 using Serilog;
 
 namespace lpf2test

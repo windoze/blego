@@ -1,19 +1,42 @@
 using System;
 using System.Threading.Tasks;
-using bledevice.PowerUp.Devices;
+using bledevice.PoweredUp.Devices;
 using HashtagChris.DotNetBlueZ;
 using Serilog;
 
-namespace bledevice.PowerUp.Hubs
+namespace bledevice.PoweredUp.Hubs
 {
+    /// <summary>
+    /// Boost MoveHub, Part ID 88006
+    /// </summary>
     public class MoveHub : LPF2Hub
     {
         #region Properties
 
+        /// <summary>
+        /// Integrated RGD LED Light
+        /// </summary>
         public HubLED LED { get; private set; }
+
+        /// <summary>
+        /// Internal Tilt Sensor
+        /// </summary>
         public MoveHubTiltSensor TiltSensor { get; private set; }
+
+        /// <summary>
+        /// Internal Tacho Motor on Port A
+        /// </summary>
         public MoveHubMediumLinearMotor MotorA { get; private set; }
+
+
+        /// <summary>
+        /// Internal Tacho Motor on Port B
+        /// </summary>
         public MoveHubMediumLinearMotor MotorB { get; private set; }
+
+        /// <summary>
+        /// Virtual Motor Group to control Motor A+B at same time
+        /// </summary>
         public MoveHubMediumLinearMotor MotorAB { get; private set; }
 
         #endregion
@@ -46,6 +69,11 @@ namespace bledevice.PowerUp.Hubs
 
         #region Factory
 
+        /// <summary>
+        /// Scan and connect to a MoveHub
+        /// </summary>
+        /// <param name="timeout">The scan will stop after the period</param>
+        /// <returns>MoveHub instance if the device is successfully found and connected</returns>
         public static async Task<MoveHub?> ScanAndConnect(TimeSpan? timeout = null)
         {
             var device = await ScanAndConnectInternal(new ScanFilter(name: "LEGO Move Hub"), timeout);
@@ -55,6 +83,12 @@ namespace bledevice.PowerUp.Hubs
             return ret;
         }
 
+        /// <summary>
+        /// Connect to a MoveHub at specified MAC address
+        /// </summary>
+        /// <param name="address">The MAC address</param>
+        /// <param name="timeout">The scan will stop after the period</param>
+        /// <returns>MoveHub instance if the device is successfully found and connected</returns>
         public new static async Task<MoveHub?> Connect(string address, TimeSpan? timeout = null)
         {
             var device = await ScanAndConnectInternal(new ScanFilter(address), timeout);

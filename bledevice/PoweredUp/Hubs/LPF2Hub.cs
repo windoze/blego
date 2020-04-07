@@ -1,16 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using bledevice.GeneralServices;
-using bledevice.PowerUp.Devices;
-using bledevice.PowerUp.Protocol;
+using bledevice.PoweredUp.Devices;
+using bledevice.PoweredUp.Protocol;
 using HashtagChris.DotNetBlueZ;
 using Serilog;
 
 // ReSharper disable InconsistentNaming
-namespace bledevice.PowerUp.Hubs
+namespace bledevice.PoweredUp.Hubs
 {
     public class LPF2Error : BleDeviceError
     {
@@ -19,92 +18,154 @@ namespace bledevice.PowerUp.Hubs
         }
     }
 
+    /// <summary>
+    /// Generic LPF2 Hub
+    /// </summary>
     public class LPF2Hub : BleDevice
     {
-        #region Constants
-
-        public enum ButtonState : byte
-        {
-            RELEASED = 0,
-            UP = 1,
-            PRESSED = 2,
-            STOP = 127,
-            DOWN = 255,
-        }
-
-        public enum BrakingStyle : byte
-        {
-            FLOAT = 0,
-            HOLD = 126,
-            BRAKE = 127
-        }
-
-        public enum DuploTrainBaseSound : byte
-        {
-            BRAKE = 3,
-            STATION_DEPARTURE = 5,
-            WATER_REFILL = 7,
-            HORN = 9,
-            STEAM = 10
-        }
-
-        public enum BLEManufacturerData : byte
-        {
-            DUPLO_TRAIN_BASE_ID = 32,
-            MOVE_HUB_ID = 64,
-            HUB_ID = 65,
-            REMOTE_CONTROL_ID = 66,
-            TECHNIC_MEDIUM_HUB = 128
-        }
-
-        #endregion
-
         #region Properties
 
+        /// <summary>
+        /// Hub Type
+        /// </summary>
         public LPF2HubType HubType { get; protected set; } = LPF2HubType.UNKNOWN;
 
+        /// <summary>
+        /// All available port ids, include virtual ports 
+        /// </summary>
         public IEnumerable<int> Ports =>
             from n in PortIdMap.Zip(Enumerable.Range(0, byte.MaxValue))
             where n.First != null
             select n.Second;
 
+        /// <summary>
+        /// All port names, include virtual ports, the name of the virtual port is like "A+B"
+        /// </summary>
         public IEnumerable<string> PortNames => from name in PortIdMap where name != null select name;
+
+        /// <summary>
+        /// Hub Firmware Version
+        /// </summary>
         public string FirmwareVersion { get; private set; } = "";
+
+        /// <summary>
+        /// Hub Hardware Version
+        /// </summary>
         public string HardwareVersion { get; private set; } = "";
+
+        /// <summary>
+        /// Signal Strength
+        /// </summary>
         public int RSSI { get; private set; } = 0;
+
+        /// <summary>
+        /// Bluetooth MAC Address
+        /// </summary>
         public string PrimaryMACAddress { get; private set; } = "";
+
+        /// <summary>
+        /// Battery Voltage
+        /// </summary>
         public int BatteryVoltage { get; private set; } = 0;
 
         #endregion
 
         #region Events
 
+        /// <summary>
+        /// Event for BLE connection established for the Hub 
+        /// </summary>
+        /// <param name="sender">The Hub</param>
         public delegate Task ConnectHandler(LPF2Hub sender);
 
+        /// <summary>
+        /// Event for BLE connection disconnected for the Hub 
+        /// </summary>
+        /// <param name="sender">The Hub</param>
         public delegate Task DisconnectHandler(LPF2Hub sender);
 
+        /// <summary>
+        /// Event for Button State Change 
+        /// </summary>
+        /// <param name="sender">The Hub</param>
+        /// <param name="state">The state of the button on the Hub</param>
         public delegate Task ButtonStateHandler(LPF2Hub sender, ButtonState state);
 
+        /// <summary>
+        /// Event for Signal Strength Change 
+        /// </summary>
+        /// <param name="sender">The Hub</param>
+        /// <param name="rssi">Received signal strength</param>
         public delegate Task RSSIHandler(LPF2Hub sender, int rssi);
 
+        /// <summary>
+        /// Event for Battery Voltage Change 
+        /// </summary>
+        /// <param name="sender">The Hub</param>
+        /// <param name="batteryVoltage">Battery Voltage</param>
         public delegate Task BatteryVoltageHandler(LPF2Hub sender, int batteryVoltage);
 
+        /// <summary>
+        /// Event for LPF2 device attachment
+        /// </summary>
+        /// <param name="sender">The Hub</param>
+        /// <param name="device">The attached device</param>
+        /// <param name="portId">The port id</param>
         public delegate Task DeviceAttachHandler(LPF2Hub sender, LPF2Device? device, int portId);
 
+        /// <summary>
+        /// Event for LPF2 device detachment
+        /// </summary>
+        /// <param name="sender">The Hub</param>
+        /// <param name="device">The detached device</param>
+        /// <param name="portId">The port id</param>
         public delegate Task DeviceDetachHandler(LPF2Hub sender, LPF2Device? device, int portId);
 
+        /// <summary>
+        /// Connect event handler
+        /// </summary>
         public event ConnectHandler? OnConnect;
+
+        /// <summary>
+        /// Disconnect event handler
+        /// </summary>
         public event DisconnectHandler? OnDisconnect;
+
+        /// <summary>
+        /// Button event handler
+        /// </summary>
         public event ButtonStateHandler? OnButtonStateChange;
+
+        /// <summary>
+        /// RSSI event handler
+        /// </summary>
         public event RSSIHandler? OnRSSIChange;
+
+        /// <summary>
+        /// Battery voltage event handler
+        /// </summary>
         public event BatteryVoltageHandler? OnBatteryVoltageChange;
+
+        /// <summary>
+        /// Device attachment event handler
+        /// </summary>
         public event DeviceAttachHandler? OnDeviceAttach;
+
+        /// <summary>
+        /// Device detachment event handler
+        /// </summary>
         public event DeviceDetachHandler? OnDeviceDetach;
 
         #endregion
 
         #region Public Methods
 
+        /// <summary>
+        /// Create virtual port
+        /// </summary>
+        /// <param name="port1">The name of the first port</param>
+        /// <param name="port2">The name of the second port</param>
+        /// <returns></returns>
         public async Task CreateVirtualPort(string port1, string port2)
         {
             int portId1 = GetPortId(port1) ?? throw new LPF2Error($"Port {port1} doesn't have device attached.");
@@ -112,11 +173,21 @@ namespace bledevice.PowerUp.Hubs
             await Send(Message.MessageType.VirtualPortSetup, new byte[] {0x01, (byte) portId1, (byte) portId2});
         }
 
+        /// <summary>
+        /// Get Port Name
+        /// </summary>
+        /// <param name="portId">The port id</param>
+        /// <returns>The port name, null if the port doesn't exist</returns>
         public string? GetPortName(int portId)
         {
             return PortIdMap[portId];
         }
 
+        /// <summary>
+        /// Get Port Id
+        /// </summary>
+        /// <param name="Name">The Port Name</param>
+        /// <returns>The port id, null if the port doesn't exist</returns>
         public int? GetPortId(string Name)
         {
             var x = from p in Ports where PortIdMap[p] == Name select p;
@@ -125,21 +196,41 @@ namespace bledevice.PowerUp.Hubs
             return enumerable.First();
         }
 
+        /// <summary>
+        /// Get the device attached to the port
+        /// </summary>
+        /// <param name="portId">the port id</param>
+        /// <returns>The device, null if the port doesn't exist or has no device attached</returns>
         public LPF2Device? GetDevice(int portId)
         {
             return _devices[portId];
         }
 
+        /// <summary>
+        /// Get the device attached to the port
+        /// </summary>
+        /// <param name="portName">the port name</param>
+        /// <returns>The device, null if the port doesn't exist or has no device attached</returns>
         public LPF2Device? GetDevice(string portName)
         {
             return _devices[Array.IndexOf(PortIdMap, portName)];
         }
 
+        /// <summary>
+        /// Find the first device with given type
+        /// </summary>
+        /// <param name="type">The device type</param>
+        /// <returns>The device, null if there is no such type of device attached</returns>
         public LPF2Device? FindFirstDevice(LPF2DeviceType type)
         {
             return _devices.DefaultIfEmpty(null).FirstOrDefault((lpf2Device => lpf2Device?.Type == type));
         }
 
+        /// <summary>
+        /// Find all devices with given type
+        /// </summary>
+        /// <param name="type">The device type</param>
+        /// <returns>The list of found devices, could be empty if there is no such type of device attached</returns>
         public IEnumerable<LPF2Device> FindAllDevices(LPF2DeviceType type)
         {
             return from dev in _devices where dev?.Type == type select dev;
@@ -581,12 +672,25 @@ namespace bledevice.PowerUp.Hubs
 
         #region Factory
 
+        /// <summary>
+        /// Scan and connect to the LPF2 Hub with given name
+        /// </summary>
+        /// <param name="name">The name of the hub</param>
+        /// <param name="timeout">Time period the scanning process lasts, default value is 10 seconds.</param>
+        /// <returns>The Hub instance, null if no hub found or connected</returns>
         public static async Task<LPF2Hub?> ScanAndConnect(string name, TimeSpan? timeout = null)
         {
             var dev = await ScanAndConnectInternal(new ScanFilter(name: name), timeout);
             return await CreateHubInstance(dev);
         }
 
+        /// <summary>
+        /// Connect to the LPF2 Hub at given MAC address.
+        /// </summary>
+        /// <param name="address">The Hub MAC address</param>
+        /// <param name="timeout">Time period the scanning process lasts, default value is 10 seconds.</param>
+        /// <returns></returns>
+        /// <exception cref="LPF2Error">Thrown when the hub cannot be connected</exception>
         public static async Task<LPF2Hub> Connect(string address, TimeSpan? timeout = null)
         {
             var dev = await ScanAndConnectInternal(new ScanFilter(address: address), timeout);

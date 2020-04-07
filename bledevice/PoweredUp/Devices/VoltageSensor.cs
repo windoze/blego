@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using bledevice.PowerUp.Helpers.DefaultableDictionary;
-using bledevice.PowerUp.Hubs;
-using bledevice.PowerUp.Protocol;
+using bledevice.PoweredUp.Helpers.DefaultableDictionary;
+using bledevice.PoweredUp.Hubs;
+using bledevice.PoweredUp.Protocol;
 
-namespace bledevice.PowerUp.Devices
+namespace bledevice.PoweredUp.Devices
 {
+    /// <summary>
+    /// Voltage Sensor inside of all Powered Up Hubs
+    /// </summary>
     public class VoltageSensor : LPF2Device, ISensor
     {
         private const byte MODE_VOLTAGE = 0x00;
@@ -47,8 +50,16 @@ namespace bledevice.PowerUp.Devices
             }
         }
 
-        public delegate Task VoltageHandler(VoltageSensor sender, double current);
+        /// <summary>
+        /// Event handler for voltage change
+        /// </summary>
+        /// <param name="sender">The sensor which sends the event</param>
+        /// <param name="voltage">Voltage value</param>
+        public delegate Task VoltageHandler(VoltageSensor sender, double voltage);
 
+        /// <summary>
+        /// Event for voltage change
+        /// </summary>
         public event VoltageHandler? OnVoltageChange;
     }
 }

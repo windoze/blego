@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace bledevice.PowerUp.Protocol
+namespace bledevice.PoweredUp.Protocol
 {
     // ReSharper disable InconsistentNaming
     public class Message

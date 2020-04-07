@@ -1,10 +1,13 @@
 using System;
 using System.Threading.Tasks;
-using bledevice.PowerUp.Hubs;
-using bledevice.PowerUp.Protocol;
+using bledevice.PoweredUp.Hubs;
+using bledevice.PoweredUp.Protocol;
 
-namespace bledevice.PowerUp.Devices
+namespace bledevice.PoweredUp.Devices
 {
+    /// <summary>
+    /// Tacho Motor with PID control of speed/angle
+    /// </summary>
     public class AbsoluteMotor : TachoMotor
     {
         private const byte MODE_ABSOLUTE = 0x03;

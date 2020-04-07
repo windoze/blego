@@ -1,10 +1,13 @@
 using System;
 using System.Threading.Tasks;
-using bledevice.PowerUp.Hubs;
-using bledevice.PowerUp.Protocol;
+using bledevice.PoweredUp.Hubs;
+using bledevice.PoweredUp.Protocol;
 
-namespace bledevice.PowerUp.Devices
+namespace bledevice.PoweredUp.Devices
 {
+    /// <summary>
+    /// Boost Color and Distance Sensor, Part ID 88007
+    /// </summary>
     public class ColorDistanceSensor : LPF2Device, ISensor
     {
         private const byte MODE_COLOR = 0x00;
@@ -63,12 +66,28 @@ namespace bledevice.PowerUp.Devices
             }
         }
 
+        /// <summary>
+        /// Color event handler
+        /// </summary>
+        /// <param name="sender">The sensor sends the event</param>
+        /// <param name="color">The color detected by the sensor</param>
         public delegate Task ColorHandler(ColorDistanceSensor sender, Color color);
 
+        /// <summary>
+        /// The color event handler
+        /// </summary>
         public event ColorHandler? OnColorChange;
 
+        /// <summary>
+        /// Distance event handler
+        /// </summary>
+        /// <param name="sender">The sensor sends the event</param>
+        /// <param name="distance">The distance detected by the sensor</param>
         public delegate Task DistanceHandler(ColorDistanceSensor sender, double distance);
 
+        /// <summary>
+        /// The distance event handler
+        /// </summary>
         public event DistanceHandler? OnDistanceChange;
     }
 }
