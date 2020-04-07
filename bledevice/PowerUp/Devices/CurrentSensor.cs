@@ -31,7 +31,6 @@ namespace bledevice.PowerUp.Devices
             if (OnCurrentChange != null)
             {
                 var value = BitConverter.ToUInt16(msg.Payload.Slice(1));
-                // TODO: Convert Raw value base on Hub Type then call 
                 var maxValue = MAX_CURRENT_VALUES[Hub.HubType];
                 var maxRaw = MAX_CURRENT_RAW[Hub.HubType];
                 var current = ((double) value) * maxValue / maxRaw;

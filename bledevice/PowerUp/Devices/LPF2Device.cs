@@ -22,7 +22,8 @@ namespace bledevice.PowerUp.Devices
         public int Port { get; private set; }
         public string PortName { get; private set; }
         public byte Mode { get; set; }
-        protected bool IsVirtualPort { get; private set; } = false;
+        public bool IsVirtualPort { get; internal set; } = false;
+        
         protected bool _connected = false;
         protected bool _buzy = false;
 

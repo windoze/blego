@@ -107,7 +107,9 @@ namespace bledevice.PowerUp.Hubs
 
         public async Task CreateVirtualPort(string port1, string port2)
         {
-            // TODO:
+            int portId1 = GetPortId(port1) ?? throw new LPF2Error($"Port {port1} doesn't have device attached.");
+            int portId2 = GetPortId(port2) ?? throw new LPF2Error($"Port {port2} doesn't have device attached.");
+            await Send(Message.MessageType.VirtualPortSetup, new byte[] {0x01, (byte) portId1, (byte) portId2});
         }
 
         public string? GetPortName(int portId)
@@ -314,6 +316,8 @@ namespace bledevice.PowerUp.Hubs
             }
 
             Log.Debug($"Attaching {device} to port {portId} on {this}.");
+            device.IsVirtualPort = VirtualPortMap.ContainsKey((byte) portId);
+
             await device.Initialize();
             _devices[portId] = device;
             if (OnDeviceAttach != null)
@@ -404,9 +408,9 @@ namespace bledevice.PowerUp.Hubs
                     var virtualPortId = msg.Payload[0];
                     PortIdMap[virtualPortId] = virtualPortName;
                     VirtualPortMap[virtualPortId] = virtualPortName;
+                    Log.Debug($"VirtualPort(name={virtualPortName}, id={virtualPortId}) created.");
                     await AttachDevice(LPF2Device.CreateInstance(this, (LPF2DeviceType) deviceType, virtualPortId),
                         virtualPortId);
-                    Log.Debug($"VirtualPort(name={virtualPortName}, id={virtualPortId}) created.");
                     break;
                 default:
                     Log.Warning($"Unknown attached IO event {eventType}.");

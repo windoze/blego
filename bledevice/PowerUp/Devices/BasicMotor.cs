@@ -14,7 +14,7 @@ namespace bledevice.PowerUp.Devices
         public async Task SetPower(int power)
         {
             await Hub.Send(Message.MessageType.PortOutputCommand,
-                new byte[] {(byte) Port, 0x11, 0x51, 0x00, (byte) MapSpeed(power)});
+                new byte[] {(byte) Port, 0x11, 0x51, 0x00, MapSpeed(power)});
         }
 
         public async Task Stop()
@@ -28,7 +28,7 @@ namespace bledevice.PowerUp.Devices
             await SetPower(127);
         }
 
-        private static sbyte MapSpeed(int value)
+        protected static byte MapSpeed(int value)
         {
             if (value == 127)
             {
@@ -44,7 +44,7 @@ namespace bledevice.PowerUp.Devices
                 value = -100;
             }
 
-            return (sbyte) value;
+            return (byte)((sbyte) value);
         }
     }
 }

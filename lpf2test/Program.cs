@@ -54,7 +54,13 @@ namespace lpf2test
                 }
             };
             // var motor = movehub.GetDevice("D") as MediumLinearMotor;
-            // //var motor = movehub.MotorAB;
+            var motor = movehub.MotorAB;
+            // await motor.SetSpeed(50, TimeSpan.FromSeconds(3));
+            // await Task.Delay(TimeSpan.FromSeconds(2));
+            motor.BrakingStyle = TachoMotor.BrakingStyles.HOLD;
+            await motor.SetSpeed(70, 30, TimeSpan.FromSeconds(3));
+            // await motor.SetSpeed(70, 30);
+            //await motor.SetSpeed(50);
             // await motor.SetPower(50);
             // await Task.Delay(TimeSpan.FromSeconds(3));
             // await motor.SetPower(0);

@@ -46,5 +46,20 @@ namespace bledevice.PowerUp.Devices
 
             return angle;
         }
+
+        public async Task RotateByDegrees(int degrees, int speed)
+        {
+            // TODO:
+        }
+
+        public async Task RotateByDegrees(int degrees, int speed1, int speed2)
+        {
+            if (!IsVirtualPort)
+            {
+                throw new LFP2DeviceError("Only virtual port supports multiple speeds.");
+            }
+
+            // TODO:
+        }
     }
 }
