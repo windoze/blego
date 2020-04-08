@@ -8,8 +8,8 @@
         "type": "coreclr",
         "request": "launch",
         "program": "/usr/bin/dotnet",
-        "args": ["bin/Debug/netcoreapp3.1/lpf2test.dll", "10"],
-        "cwd": "~/repos/blego/lpf2test",
+        "args": ["bin/Debug/netcoreapp3.1/bletest.dll", "10"],
+        "cwd": "~/repos/blego/bletest",
         "stopAtEntry": false,
         "console": "internalConsole",
         "pipeTransport": {

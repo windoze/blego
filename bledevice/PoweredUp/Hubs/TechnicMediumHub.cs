@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using bledevice.PoweredUp.Devices;
 using HashtagChris.DotNetBlueZ;
@@ -76,5 +77,37 @@ namespace bledevice.PoweredUp.Hubs
             GyroSensor = _devices[98] as GyroSensor;
             TiltSensor = _devices[99] as TechnicMediumHubTiltSensor;
         }
+        #region Factory
+
+        /// <summary>
+        /// Scan and connect to a TechnicMediumHub
+        /// </summary>
+        /// <param name="timeout">The scan will stop after the period</param>
+        /// <returns>TechnicMediumHub instance if the device is successfully found and connected</returns>
+        public static async Task<TechnicMediumHub?> ScanAndConnect(TimeSpan? timeout = null)
+        {
+            var device = await ScanAndConnectInternal(new ScanFilter(name: "Technic Hub"), timeout);
+            if (device == null) return null;
+            var ret = new TechnicMediumHub(device);
+            await ret.Initialize();
+            return ret;
+        }
+
+        /// <summary>
+        /// Connect to a TechnicMediumHub at specified MAC address
+        /// </summary>
+        /// <param name="address">The MAC address</param>
+        /// <param name="timeout">The scan will stop after the period</param>
+        /// <returns>TechnicMediumHub instance if the device is successfully found and connected</returns>
+        public new static async Task<TechnicMediumHub?> Connect(string address, TimeSpan? timeout = null)
+        {
+            var device = await ScanAndConnectInternal(new ScanFilter(address), timeout);
+            if (device == null) return null;
+            var ret = new TechnicMediumHub(device);
+            await ret.Initialize();
+            return ret;
+        }
+
+        #endregion
     }
 }

@@ -76,7 +76,7 @@ namespace bledevice
         public DeviceInformationService? DeviceInformationService { get; private set; }
         public BatteryService? BatteryService { get; private set; }
 
-        protected static async Task<IDevice1> ScanAndConnectInternal(ScanFilter filter,
+        protected static async Task<IDevice1?> ScanAndConnectInternal(ScanFilter filter,
             TimeSpan? timeout = null,
             string? adapter = null)
         {
@@ -146,8 +146,8 @@ namespace bledevice
                 return device1;
             }
 
-            Log.Warning("Micro:bit not found.");
-            throw new BleDeviceError("Device not found.");
+            Log.Warning("Device not found.");
+            return null;
         }
 
         public static async Task<BleDevice?> ScanAndConnect(ScanFilter filter,
@@ -155,9 +155,11 @@ namespace bledevice
             string? adapter = null)
         {
             var dev = await ScanAndConnectInternal(filter, timeout, adapter);
+            if (dev == null) return null;
             var ret = new BleDevice(dev);
             await ret.Initialize();
             return ret;
+
         }
 
         private static async Task<bool> ShouldConnect(ScanFilter filter, IDevice1 device)

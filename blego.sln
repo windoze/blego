@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bletest", "bletest\bletest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bledevice", "bledevice\bledevice.csproj", "{6A646C7A-F1D6-4A85-9B7D-1F892756723F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lpf2test", "lpf2test\lpf2test.csproj", "{12AFAF04-A87E-4859-9AE0-02E1C42417D9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{6A646C7A-F1D6-4A85-9B7D-1F892756723F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A646C7A-F1D6-4A85-9B7D-1F892756723F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A646C7A-F1D6-4A85-9B7D-1F892756723F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12AFAF04-A87E-4859-9AE0-02E1C42417D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12AFAF04-A87E-4859-9AE0-02E1C42417D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12AFAF04-A87E-4859-9AE0-02E1C42417D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12AFAF04-A87E-4859-9AE0-02E1C42417D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

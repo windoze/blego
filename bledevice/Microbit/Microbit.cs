@@ -49,10 +49,11 @@ namespace bledevice.Microbit
         {
         }
 
-        public static async Task<Microbit> ScanAndConnect(string? address = null, TimeSpan? timeout = null)
+        public static async Task<Microbit?> ScanAndConnect(string? address = null, TimeSpan? timeout = null)
         {
             var dev = await ScanAndConnectInternal(new ScanFilter(address: address, name: "BBC micro:bit"),
                 timeout);
+            if (dev == null) return null;
             var ret = new Microbit(dev);
             await ret.Initialize();
             return ret;
