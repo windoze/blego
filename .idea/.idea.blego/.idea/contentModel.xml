@@ -6,6 +6,7 @@
     <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p=".git/info/exclude" t="IncludeRecursive" />
       <e p="bledevice" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="BleDevice.cs" t="Include" />
@@ -73,6 +74,46 @@
         </e>
       </e>
       <e p="blego.sln" t="IncludeFlat" />
+      <e p="bleservice" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bleservice.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="bleservice.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PlatformService" t="Include">
+          <e p="BluetoothLE" t="Include">
+            <e p="BluetoothLEDeviceState.cs" t="Include" />
+            <e p="IBluetoothLEDevice.cs" t="Include" />
+            <e p="IBluetoothLEManager.cs" t="Include" />
+            <e p="IGattCharacteristic.cs" t="Include" />
+            <e p="IGattService.cs" t="Include" />
+            <e p="ScanResult.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="bleservice.Linux" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bleservice.Linux.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="bleservice.Linux.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PlatformService" t="Include">
+          <e p="BluetoothLE" t="Include">
+            <e p="BluetoothLEDevice.cs" t="Include" />
+            <e p="BluetoothLEManager.cs" t="Include" />
+            <e p="GattCharacteristic.cs" t="Include" />
+            <e p="GattService.cs" t="Include" />
+          </e>
+        </e>
+      </e>
       <e p="bletest" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="bletest.csproj" t="IncludeRecursive" />

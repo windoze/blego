@@ -1,10 +1,14 @@
+// Code taken from https://github.com/imurvai/brickcontroller2
+// Copyrighted by István Murvai
+// The license of the original code is unclear
+
 // ReSharper disable InconsistentNaming
 
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace bledevice.PlatformService.BluetoothLE
+namespace bleservice.PlatformService.BluetoothLE
 {
     public interface IBluetoothLEManager
     {

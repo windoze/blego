@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bledevice", "bledevice\bled
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lpf2test", "lpf2test\lpf2test.csproj", "{12AFAF04-A87E-4859-9AE0-02E1C42417D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bleservice.Linux", "bleservice.Linux\bleservice.Linux.csproj", "{3D3B3CCA-6ADA-4AA5-8F04-DE614329EA0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bleservice", "bleservice\bleservice.csproj", "{4060B3A5-8CAB-4F86-BC61-A5440DFEB151}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{12AFAF04-A87E-4859-9AE0-02E1C42417D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12AFAF04-A87E-4859-9AE0-02E1C42417D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12AFAF04-A87E-4859-9AE0-02E1C42417D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D3B3CCA-6ADA-4AA5-8F04-DE614329EA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D3B3CCA-6ADA-4AA5-8F04-DE614329EA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D3B3CCA-6ADA-4AA5-8F04-DE614329EA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D3B3CCA-6ADA-4AA5-8F04-DE614329EA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4060B3A5-8CAB-4F86-BC61-A5440DFEB151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4060B3A5-8CAB-4F86-BC61-A5440DFEB151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4060B3A5-8CAB-4F86-BC61-A5440DFEB151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4060B3A5-8CAB-4F86-BC61-A5440DFEB151}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
