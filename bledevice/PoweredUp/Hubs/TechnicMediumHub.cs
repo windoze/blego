@@ -25,6 +25,21 @@ namespace bledevice.PoweredUp.Hubs
         public VoltageSensor VoltageSensor { get; private set; }
 
         /// <summary>
+        /// Built-in Gyro Sensor
+        /// </summary>
+        public GyroSensor GyroSensor { get; private set; }
+
+        /// <summary>
+        /// Built-in Accelerometer
+        /// </summary>
+        public Accelerometer Accelerometer { get; private set; }
+
+        /// <summary>
+        /// Built-in TiltSensor
+        /// </summary>
+        public TechnicMediumHubTiltSensor TiltSensor { get; private set; }
+
+        /// <summary>
         /// Integrated RGD LED Light
         /// </summary>
         public HubLED LED { get; private set; }
@@ -57,6 +72,9 @@ namespace bledevice.PoweredUp.Hubs
             LED = _devices[50] as HubLED;
             CurrentSensor = _devices[59] as CurrentSensor;
             VoltageSensor = _devices[60] as VoltageSensor;
+            Accelerometer = _devices[97] as Accelerometer;
+            GyroSensor = _devices[98] as GyroSensor;
+            TiltSensor = _devices[99] as TechnicMediumHubTiltSensor;
         }
     }
 }

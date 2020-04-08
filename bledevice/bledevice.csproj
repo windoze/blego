@@ -5,6 +5,8 @@
         <Nullable>enable</Nullable>
         <Authors>Chen Xu &lt;windoze@0d0a.com&gt;</Authors>
         <Description>Bluetooth LE library to controll Micro:bit and LEGO PowerUp Hubs/Devices</Description>
+        <PackageId>blego</PackageId>
+        <Title>BleGo</Title>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
