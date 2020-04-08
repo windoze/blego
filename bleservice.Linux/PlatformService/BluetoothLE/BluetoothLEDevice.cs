@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using bleservice.PlatformService.BluetoothLE;
+using HashtagChris.DotNetBlueZ;
 
 namespace bleservice.Linux.PlatformService.BluetoothLE
 {
-    public class BluetoothLEDevice: IBluetoothLEDevice
+    public class BluetoothLEDevice : IBluetoothLEDevice
     {
+        private IDevice1 _device;
+
+        public BluetoothLEDevice(IDevice1 device)
+        {
+            _device = device;
+        }
+
+        #region Overrides
+
         public string Address { get; }
         public BluetoothLEDeviceState State { get; }
 
-        public Task<IEnumerable<IGattService>> ConnectAndDiscoverServicesAsync(bool autoConnect, Action<Guid, byte[]> onCharacteristicChanged, Action<IBluetoothLEDevice> onDeviceDisconnected,
+        public Task<IEnumerable<IGattService>> ConnectAndDiscoverServicesAsync(bool autoConnect,
+            CharacteristicChangeHandlerAsync onCharacteristicChanged, DeviceDisconnectHandlerAsync onDeviceDisconnected,
             CancellationToken token)
         {
             throw new NotImplementedException();
@@ -41,5 +52,7 @@ namespace bleservice.Linux.PlatformService.BluetoothLE
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

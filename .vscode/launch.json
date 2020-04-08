@@ -3,23 +3,44 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [{
-        "name": ".NET Core Attach",
-        "type": "coreclr",
-        "request": "launch",
-        "program": "/usr/bin/dotnet",
-        "args": ["bin/Debug/netcoreapp3.1/lpf2test.dll", "10"],
-        "cwd": "~/repos/blego/lpf2test",
-        "stopAtEntry": false,
-        "console": "internalConsole",
-        "pipeTransport": {
-            "pipeCwd": "${workspaceRoot}",
-            "pipeProgram": "/usr/bin/ssh",
-            "pipeArgs": [
-                "u"
-            ],
-            "debuggerPath": "~/vsdbg/vsdbg"
+    "configurations": [
+        {
+            "name": "lpf2test",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "/usr/bin/dotnet",
+            "args": ["bin/Debug/netcoreapp3.1/lpf2test.dll", "10"],
+            "cwd": "~/repos/blego/lpf2test",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "u"
+                ],
+                "debuggerPath": "~/vsdbg/vsdbg"
+            },
+            "preLaunchTask": "deploy"
         },
-        "preLaunchTask": "deploy"
-    }]
+        {
+            "name": "bletest",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "/usr/bin/dotnet",
+            "args": ["bin/Debug/netcoreapp3.1/bletest.dll", "10"],
+            "cwd": "~/repos/blego/bletest",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "u"
+                ],
+                "debuggerPath": "~/vsdbg/vsdbg"
+            },
+            "preLaunchTask": "deploy"
+        }
+    ]
 }

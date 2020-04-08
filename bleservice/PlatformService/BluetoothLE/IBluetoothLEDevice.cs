@@ -6,10 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 // ReSharper disable InconsistentNaming
 
 namespace bleservice.PlatformService.BluetoothLE
 {
+    public delegate Task CharacteristicChangeHandlerAsync(Guid guid, byte[] data);
+
+    public delegate Task DeviceDisconnectHandlerAsync(IBluetoothLEDevice device);
+
     public interface IBluetoothLEDevice
     {
         string Address { get; }
@@ -17,9 +22,10 @@ namespace bleservice.PlatformService.BluetoothLE
 
         Task<IEnumerable<IGattService>> ConnectAndDiscoverServicesAsync(
             bool autoConnect,
-            Action<Guid, byte[]> onCharacteristicChanged,
-            Action<IBluetoothLEDevice> onDeviceDisconnected,
+            CharacteristicChangeHandlerAsync onCharacteristicChanged,
+            DeviceDisconnectHandlerAsync onDeviceDisconnected,
             CancellationToken token);
+
         void Disconnect();
 
         Task<bool> EnableNotificationAsync(IGattCharacteristic characteristic, CancellationToken token);

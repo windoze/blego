@@ -8,4 +8,8 @@
       <ProjectReference Include="..\bleservice\bleservice.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="HashtagChris.DotNetBlueZ" Version="1.2.0" />
+    </ItemGroup>
+
 </Project>
