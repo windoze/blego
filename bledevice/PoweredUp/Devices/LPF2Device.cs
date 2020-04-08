@@ -14,7 +14,7 @@ namespace bledevice.PoweredUp.Devices
         }
     }
 
-    public class LPF2Device
+    public abstract class LPF2Device
     {
         /// <summary>
         /// Device Type
@@ -117,7 +117,7 @@ namespace bledevice.PoweredUp.Devices
                 case LPF2DeviceType.TRAIN_MOTOR:
                     break;
                 case LPF2DeviceType.LIGHT:
-                    break;
+                    return new Light(hub, portId);
                 case LPF2DeviceType.VOLTAGE_SENSOR:
                     return new VoltageSensor(hub, portId);
                 case LPF2DeviceType.CURRENT_SENSOR:
@@ -147,9 +147,9 @@ namespace bledevice.PoweredUp.Devices
                 case LPF2DeviceType.DUPLO_TRAIN_BASE_SPEEDOMETER:
                     break;
                 case LPF2DeviceType.TECHNIC_LARGE_LINEAR_MOTOR:
-                    break;
+                    return new TechnicLargeLinearMotor(hub, portId);
                 case LPF2DeviceType.TECHNIC_XLARGE_LINEAR_MOTOR:
-                    break;
+                    return new TechnicXLargeLinearMotor(hub, portId);
                 case LPF2DeviceType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
                     break;
                 case LPF2DeviceType.TECHNIC_LARGE_ANGULAR_MOTOR:
@@ -161,11 +161,11 @@ namespace bledevice.PoweredUp.Devices
                 case LPF2DeviceType.REMOTE_CONTROL_RSSI:
                     break;
                 case LPF2DeviceType.TECHNIC_MEDIUM_HUB_ACCELEROMETER:
-                    break;
+                    return new TechnicMediumHubAccelerometer(hub, portId);
                 case LPF2DeviceType.TECHNIC_MEDIUM_HUB_GYRO_SENSOR:
-                    break;
+                    return new TechnicMediumHubGyroSensor(hub, portId);
                 case LPF2DeviceType.TECHNIC_MEDIUM_HUB_TILT_SENSOR:
-                    break;
+                    return new TechnicMediumHubTiltSensor(hub, portId);
                 case LPF2DeviceType.TECHNIC_MEDIUM_HUB_TEMPERATURE_SENSOR:
                     break;
                 case LPF2DeviceType.TECHNIC_COLOR_SENSOR:

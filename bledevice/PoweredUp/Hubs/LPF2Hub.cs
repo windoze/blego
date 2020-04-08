@@ -21,7 +21,7 @@ namespace bledevice.PoweredUp.Hubs
     /// <summary>
     /// Generic LPF2 Hub
     /// </summary>
-    public class LPF2Hub : BleDevice
+    public abstract class LPF2Hub : BleDevice
     {
         #region Properties
 
@@ -306,11 +306,14 @@ namespace bledevice.PoweredUp.Hubs
             await EnablePropertyNotification(Message.HubPropertyType.BatteryVoltage);
             // Get Primary MAC Address
             await UpdateHubPropertyValue(Message.HubPropertyType.PrimaryMACAddress);
+            await SetupHub();
             if (OnConnect != null)
             {
                 await OnConnect(this);
             }
         }
+
+        protected abstract Task SetupHub();
 
         internal async Task Send(Message.MessageType type, byte[] payload)
         {
@@ -319,6 +322,7 @@ namespace bledevice.PoweredUp.Hubs
 
         private async Task OnMessage(Message msg)
         {
+            // TODO:
         }
 
         private async Task EnablePropertyNotification(Message.HubPropertyType propertyType)
@@ -517,6 +521,7 @@ namespace bledevice.PoweredUp.Hubs
 
         private async Task OnPortInformation(Message msg)
         {
+            // TODO:
         }
 
         private async Task UpdatePortModeInformation(int portId, byte mode, byte type)
@@ -526,6 +531,7 @@ namespace bledevice.PoweredUp.Hubs
 
         private async Task OnPortModeInformation(Message msg)
         {
+            // TODO:
         }
 
         private async Task OnSensorMessage(Message msg)
@@ -654,7 +660,7 @@ namespace bledevice.PoweredUp.Hubs
                     // TODO:
                     break;
                 case 128: // Technic Medium Hub
-                    // TODO:
+                    ret = new TechnicMediumHub(dev);
                     break;
             }
 

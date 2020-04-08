@@ -22,6 +22,10 @@ namespace bledevice.PoweredUp.Devices
             Mode = MODE_COLOR_AND_DISTANCE;
         }
 
+        private const double THREDSHOLD = 1;
+        private Color _color = Color.BLACK;
+        private double _distance = 0;
+
         internal override async Task ReceiveMessage(Message msg)
         {
             switch (Mode)
@@ -30,7 +34,11 @@ namespace bledevice.PoweredUp.Devices
                     if (OnColorChange != null && msg.Payload[1] <= 10)
                     {
                         var color = (Color) msg.Payload[1];
-                        await OnColorChange(this, color);
+                        if (color != _color)
+                        {
+                            _color = color;
+                            await OnColorChange(this, color);
+                        }
                     }
 
                     break;
@@ -38,7 +46,11 @@ namespace bledevice.PoweredUp.Devices
                     if (OnDistanceChange != null && msg.Payload[1] <= 10)
                     {
                         var distance = Math.Floor(msg.Payload[1] * 25.4) - 20;
-                        await OnDistanceChange(this, distance);
+                        if (Math.Abs(distance - _distance) > THREDSHOLD) // Threshold
+                        {
+                            _distance = distance;
+                            await OnDistanceChange(this, distance);
+                        }
                     }
 
                     break;
@@ -46,7 +58,11 @@ namespace bledevice.PoweredUp.Devices
                     if (OnColorChange != null && msg.Payload[1] <= 10)
                     {
                         var color = (Color) msg.Payload[1];
-                        await OnColorChange(this, color);
+                        if (color != _color)
+                        {
+                            _color = color;
+                            await OnColorChange(this, color);
+                        }
                     }
 
                     if (OnDistanceChange != null)
@@ -59,7 +75,11 @@ namespace bledevice.PoweredUp.Devices
                         }
 
                         var distance = Math.Floor(dist * 25.4) - 20;
-                        await OnDistanceChange(this, distance);
+                        if (Math.Abs(distance - _distance) > THREDSHOLD) // Threshold
+                        {
+                            _distance = distance;
+                            await OnDistanceChange(this, distance);
+                        }
                     }
 
                     break;

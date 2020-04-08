@@ -21,14 +21,14 @@ namespace bledevice
 
     public class ServiceNotFound : BleDeviceError
     {
-        public ServiceNotFound(Guid svc) : base($"Service {svc.ToString()} not found.")
+        public ServiceNotFound(Guid svc) : base($"Service {svc} not found.")
         {
         }
     }
 
     public class CharacteristicNotFound : BleDeviceError
     {
-        public CharacteristicNotFound(Guid ch) : base($"Characteristic {ch.ToString()} not found.")
+        public CharacteristicNotFound(Guid ch) : base($"Characteristic {ch} not found.")
         {
         }
     }

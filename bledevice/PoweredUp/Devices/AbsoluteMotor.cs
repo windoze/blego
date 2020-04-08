@@ -14,7 +14,11 @@ namespace bledevice.PoweredUp.Devices
 
         internal AbsoluteMotor(LPF2Hub hub, int port, LPF2DeviceType type) : base(hub, port, type)
         {
+            Mode = MODE_ABSOLUTE;
         }
+
+        public byte DefaultMode => MODE_ABSOLUTE; // Absolute
+        public bool AutoSubscribe => false;
 
         public delegate Task AbsoluteHandler(AbsoluteMotor sender, int angle);
 
@@ -33,9 +37,13 @@ namespace bledevice.PoweredUp.Devices
                     await OnPositionChange(this, angle);
                 }
             }
+            else
+            {
+                await base.ReceiveMessage(msg);
+            }
         }
 
-        private static int NormalizeAngle(short angle)
+        private static int NormalizeAngle(int angle)
         {
             if (angle >= 180)
             {
@@ -50,19 +58,34 @@ namespace bledevice.PoweredUp.Devices
             return angle;
         }
 
-        public async Task RotateByDegrees(int degrees, int speed)
+        public async Task GoToAngle(int angle, int speed)
         {
-            // TODO:
+            var angleBytes = BitConverter.GetBytes(NormalizeAngle(angle));
+            await Hub.Send(Message.MessageType.PortOutputCommand,
+                new byte[]
+                {
+                    (byte) Port, 0x11, 0x0d, angleBytes[0], angleBytes[1], angleBytes[2], angleBytes[3],
+                    MapSpeed(speed), 0x64, (byte) BrakingStyle, 0x00
+                });
         }
 
-        public async Task RotateByDegrees(int degrees, int speed1, int speed2)
+        public async Task GoToAngle(int angle1, int angle2, int speed)
         {
             if (!IsVirtualPort)
             {
-                throw new LFP2DeviceError("Only virtual port supports multiple speeds.");
+                throw new LFP2DeviceError("Only virtual port supports multiple angles.");
             }
 
-            // TODO:
+            var angle1Bytes = BitConverter.GetBytes(NormalizeAngle(angle1));
+            var angle2Bytes = BitConverter.GetBytes(NormalizeAngle(angle2));
+            await Hub.Send(Message.MessageType.PortOutputCommand,
+                new byte[]
+                {
+                    (byte) Port, 0x11, 0x0e,
+                    angle1Bytes[0], angle1Bytes[1], angle1Bytes[2], angle1Bytes[3],
+                    angle2Bytes[0], angle2Bytes[1], angle2Bytes[2], angle2Bytes[3],
+                    MapSpeed(speed), 0x64, (byte) BrakingStyle, 0x00
+                });
         }
     }
 }

@@ -34,19 +34,27 @@
         <e p="PoweredUp" t="Include">
           <e p="Devices" t="Include">
             <e p="AbsoluteMotor.cs" t="Include" />
+            <e p="Accelerometer.cs" t="Include" />
             <e p="BasicMotor.cs" t="Include" />
             <e p="ColorDistanceSensor.cs" t="Include" />
             <e p="CurrentSensor.cs" t="Include" />
+            <e p="GyroSensor.cs" t="Include" />
             <e p="HubLED.cs" t="Include" />
             <e p="IMotor.cs" t="Include" />
             <e p="ISensor.cs" t="Include" />
-            <e p="ITiltSensor.cs" t="Include" />
+            <e p="Light.cs" t="Include" />
             <e p="LPF2Device.cs" t="Include" />
             <e p="LPF2DeviceType.cs" t="Include" />
             <e p="MediumLinearMotor.cs" t="Include" />
             <e p="MoveHubMediumLinearMotor.cs" t="Include" />
             <e p="MoveHubTiltSensor.cs" t="Include" />
             <e p="TachoMotor.cs" t="Include" />
+            <e p="TechnicLargeLinearMotor.cs" t="Include" />
+            <e p="TechnicMediumHubAccelerometer.cs" t="Include" />
+            <e p="TechnicMediumHubGyroSensor.cs" t="Include" />
+            <e p="TechnicMediumHubTiltSensor.cs" t="Include" />
+            <e p="TechnicXLargeLinearMotor.cs" t="Include" />
+            <e p="TiltSensor.cs" t="Include" />
             <e p="VoltageSensor.cs" t="Include" />
           </e>
           <e p="Helpers" t="Include">
@@ -57,6 +65,7 @@
             <e p="LPF2Hub.cs" t="Include" />
             <e p="LPF2HubType.cs" t="Include" />
             <e p="MoveHub.cs" t="Include" />
+            <e p="TechnicMediumHub.cs" t="Include" />
           </e>
           <e p="Protocol" t="Include">
             <e p="Message.cs" t="Include" />

@@ -14,6 +14,16 @@ namespace bledevice.PoweredUp.Hubs
         #region Properties
 
         /// <summary>
+        /// Built-in Current Sensor
+        /// </summary>
+        public CurrentSensor CurrentSensor { get; private set; }
+
+        /// <summary>
+        /// Built-in Voltage Sensor
+        /// </summary>
+        public VoltageSensor VoltageSensor { get; private set; }
+
+        /// <summary>
         /// Integrated RGD LED Light
         /// </summary>
         public HubLED LED { get; private set; }
@@ -56,15 +66,16 @@ namespace bledevice.PoweredUp.Hubs
             PortIdMap[60] = "VOLTAGE_SENSOR";
         }
 
-        protected override async Task BleDeviceConnected()
+        protected override async Task SetupHub()
         {
-            await base.BleDeviceConnected();
             Log.Information("Move Hub connected");
             LED = _devices[50] as HubLED;
             TiltSensor = _devices[58] as MoveHubTiltSensor;
             MotorA = _devices[0] as MoveHubMediumLinearMotor;
             MotorB = _devices[1] as MoveHubMediumLinearMotor;
             MotorAB = _devices[16] as MoveHubMediumLinearMotor;
+            CurrentSensor = _devices[59] as CurrentSensor;
+            VoltageSensor = _devices[60] as VoltageSensor;
         }
 
         #region Factory
