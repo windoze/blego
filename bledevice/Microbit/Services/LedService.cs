@@ -29,6 +29,16 @@ namespace bledevice.Microbit.Services
             await WriteCharacteristic(LED_MATRIX_STATE_CHARACTERISTIC_UUID, data);
         }
 
+        public async Task Clear()
+        {
+            await WriteLedMatrixState(MatrixState.EMPTY);
+        }
+
+        public async Task WriteLedMatrixState(MatrixState data)
+        {
+            await WriteCharacteristic(LED_MATRIX_STATE_CHARACTERISTIC_UUID, data.State);
+        }
+
         public async Task WriteLedText(string data)
         {
             await Write(LED_TEXT_CHARACTERISTIC_UUID, data);

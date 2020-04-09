@@ -17,6 +17,7 @@
           <e p="GattService.cs" t="Include" />
         </e>
         <e p="Microbit" t="Include">
+          <e p="MatrixState.cs" t="Include" />
           <e p="Microbit.cs" t="Include" />
           <e p="Services" t="Include">
             <e p="AccelerometerService.cs" t="Include" />
@@ -64,7 +65,6 @@
           <e p="Hubs" t="Include">
             <e p="Contants.cs" t="Include" />
             <e p="LPF2Hub.cs" t="Include" />
-            <e p="LPF2HubType.cs" t="Include" />
             <e p="MoveHub.cs" t="Include" />
             <e p="TechnicMediumHub.cs" t="Include" />
           </e>
@@ -81,18 +81,6 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
               <e p="bletest.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Program.cs" t="Include" />
-      </e>
-      <e p="lpf2test" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="lpf2test.csproj" t="IncludeRecursive" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp3.1" t="Include">
-              <e p="lpf2test.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>

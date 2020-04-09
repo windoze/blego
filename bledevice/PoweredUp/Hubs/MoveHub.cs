@@ -9,45 +9,31 @@ namespace bledevice.PoweredUp.Hubs
     /// <summary>
     /// Boost MoveHub, Part ID 88006
     /// </summary>
+#pragma warning disable 8603  
     public class MoveHub : LPF2Hub
     {
         #region Properties
 
         /// <summary>
-        /// Built-in Current Sensor
-        /// </summary>
-        public CurrentSensor CurrentSensor { get; private set; }
-
-        /// <summary>
-        /// Built-in Voltage Sensor
-        /// </summary>
-        public VoltageSensor VoltageSensor { get; private set; }
-
-        /// <summary>
-        /// Integrated RGD LED Light
-        /// </summary>
-        public HubLED LED { get; private set; }
-
-        /// <summary>
         /// Internal Tilt Sensor
         /// </summary>
-        public MoveHubTiltSensor TiltSensor { get; private set; }
+        public MoveHubTiltSensor TiltSensor => _devices[58] as MoveHubTiltSensor;
 
         /// <summary>
         /// Internal Tacho Motor on Port A
         /// </summary>
-        public MoveHubMediumLinearMotor MotorA { get; private set; }
+        public MoveHubMediumLinearMotor MotorA => _devices[0] as MoveHubMediumLinearMotor;
 
 
         /// <summary>
         /// Internal Tacho Motor on Port B
         /// </summary>
-        public MoveHubMediumLinearMotor MotorB { get; private set; }
+        public MoveHubMediumLinearMotor MotorB => _devices[1] as MoveHubMediumLinearMotor;
 
         /// <summary>
         /// Virtual Motor Group to control Motor A+B at same time
         /// </summary>
-        public MoveHubMediumLinearMotor MotorAB { get; private set; }
+        public MoveHubMediumLinearMotor MotorAB => _devices[16] as MoveHubMediumLinearMotor;
 
         #endregion
 
@@ -64,18 +50,6 @@ namespace bledevice.PoweredUp.Hubs
             PortIdMap[58] = "TILT_SENSOR";
             PortIdMap[59] = "CURRENT_SENSOR";
             PortIdMap[60] = "VOLTAGE_SENSOR";
-        }
-
-        protected override async Task SetupHub()
-        {
-            Log.Information("Move Hub connected");
-            LED = _devices[50] as HubLED;
-            TiltSensor = _devices[58] as MoveHubTiltSensor;
-            MotorA = _devices[0] as MoveHubMediumLinearMotor;
-            MotorB = _devices[1] as MoveHubMediumLinearMotor;
-            MotorAB = _devices[16] as MoveHubMediumLinearMotor;
-            CurrentSensor = _devices[59] as CurrentSensor;
-            VoltageSensor = _devices[60] as VoltageSensor;
         }
 
         #region Factory

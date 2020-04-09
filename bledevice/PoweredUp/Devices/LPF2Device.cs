@@ -34,7 +34,8 @@ namespace bledevice.PoweredUp.Devices
         /// <summary>
         /// The port name this device is attached to.
         /// </summary>
-        public string PortName { get; private set; }
+#pragma warning disable 8603  
+        public string PortName => Hub.GetPortName(Port);
 
         /// <summary>
         /// Device Mode, different device has different modes
@@ -54,7 +55,6 @@ namespace bledevice.PoweredUp.Devices
             Hub = hub;
             Port = port;
             Type = type;
-            PortName = Hub.GetPortName(Port);
         }
 
         internal virtual async Task Initialize()
@@ -82,6 +82,7 @@ namespace bledevice.PoweredUp.Devices
         /// <summary>
         /// The device event handler
         /// </summary>
+        // TODO:
         public event DeviceEventHandler? OnDeviceEvent = null;
 
         /// <summary>

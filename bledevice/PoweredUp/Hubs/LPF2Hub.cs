@@ -11,6 +11,7 @@ using Serilog;
 // ReSharper disable InconsistentNaming
 namespace bledevice.PoweredUp.Hubs
 {
+#pragma warning disable 8603  
     public class LPF2Error : BleDeviceError
     {
         public LPF2Error(string message) : base(message)
@@ -29,6 +30,14 @@ namespace bledevice.PoweredUp.Hubs
         /// Hub Type
         /// </summary>
         public LPF2HubType HubType { get; protected set; } = LPF2HubType.UNKNOWN;
+
+        /// <summary>
+        /// All attached devices, include virtual ports 
+        /// </summary>
+        public IEnumerable<LPF2Device> Devices =>
+            from dev in _devices
+            where dev != null
+            select dev;
 
         /// <summary>
         /// All available port ids, include virtual ports 
@@ -67,6 +76,21 @@ namespace bledevice.PoweredUp.Hubs
         /// Battery Voltage
         /// </summary>
         public int BatteryVoltage { get; private set; } = 0;
+
+        /// <summary>
+        /// Integrated RGD LED Light
+        /// </summary>
+        public HubLED LED => _devices[50] as HubLED;
+
+        /// <summary>
+        /// Built-in Current Sensor
+        /// </summary>
+        public CurrentSensor CurrentSensor => _devices[59] as CurrentSensor;
+
+        /// <summary>
+        /// Built-in Voltage Sensor
+        /// </summary>
+        public VoltageSensor VoltageSensor => _devices[60] as VoltageSensor;
 
         #endregion
 
@@ -168,8 +192,8 @@ namespace bledevice.PoweredUp.Hubs
         /// <returns></returns>
         public async Task CreateVirtualPort(string port1, string port2)
         {
-            int portId1 = GetPortId(port1) ?? throw new LPF2Error($"Port {port1} doesn't have device attached.");
-            int portId2 = GetPortId(port2) ?? throw new LPF2Error($"Port {port2} doesn't have device attached.");
+            var portId1 = GetPortId(port1) ?? throw new LPF2Error($"Port {port1} doesn't have device attached.");
+            var portId2 = GetPortId(port2) ?? throw new LPF2Error($"Port {port2} doesn't have device attached.");
             await Send(Message.MessageType.VirtualPortSetup, new byte[] {0x01, (byte) portId1, (byte) portId2});
         }
 
@@ -306,14 +330,19 @@ namespace bledevice.PoweredUp.Hubs
             await EnablePropertyNotification(Message.HubPropertyType.BatteryVoltage);
             // Get Primary MAC Address
             await UpdateHubPropertyValue(Message.HubPropertyType.PrimaryMACAddress);
+
+            // Hub-specific initialization
             await SetupHub();
+
             if (OnConnect != null)
             {
                 await OnConnect(this);
             }
         }
 
-        protected abstract Task SetupHub();
+        protected virtual async Task SetupHub()
+        {
+        }
 
         internal async Task Send(Message.MessageType type, byte[] payload)
         {
@@ -687,6 +716,7 @@ namespace bledevice.PoweredUp.Hubs
         public static async Task<LPF2Hub?> ScanAndConnect(string name, TimeSpan? timeout = null)
         {
             var dev = await ScanAndConnectInternal(new ScanFilter(name: name), timeout);
+            if (dev == null) return null;
             return await CreateHubInstance(dev);
         }
 

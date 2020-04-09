@@ -6,6 +6,7 @@ namespace bledevice.PoweredUp.Helpers
     namespace DefaultableDictionary
     {
         public class DefaultableDictionary<TKey, TValue> : IDictionary<TKey, TValue>
+            where TKey : notnull
         {
             private readonly IDictionary<TKey, TValue> _dictionary;
             private readonly TValue _defaultValue;
@@ -125,6 +126,7 @@ namespace bledevice.PoweredUp.Helpers
         {
             public static IDictionary<TKey, TValue> WithDefaultValue<TValue, TKey>(
                 this IDictionary<TKey, TValue> dictionary, TValue defaultValue)
+                where TKey : notnull
             {
                 return new DefaultableDictionary<TKey, TValue>(dictionary, defaultValue);
             }

@@ -83,70 +83,78 @@ namespace bledevice
             // Default value
             if (timeout == null)
                 timeout = TimeSpan.FromSeconds(10);
-            IAdapter1? a;
-            if (adapter == null)
+            try
             {
-                var adapters = await BlueZManager.GetAdaptersAsync();
-                if (adapters.Count == 0)
+                IAdapter1? a;
+                if (adapter == null)
                 {
-                    Log.Error("No Bluetooth adapters found.");
-                    throw new BleDeviceError("No Bluetooth adapters found.");
+                    var adapters = await BlueZManager.GetAdaptersAsync();
+                    if (adapters.Count == 0)
+                    {
+                        Log.Error("No Bluetooth adapters found.");
+                        throw new BleDeviceError("No Bluetooth adapters found.");
+                    }
+
+                    a = adapters.First();
+                }
+                else
+                {
+                    a = await BlueZManager.GetAdapterAsync(adapter);
                 }
 
-                a = adapters.First();
-            }
-            else
-            {
-                a = await BlueZManager.GetAdapterAsync(adapter);
-            }
+                var adapterPath = a.ObjectPath.ToString();
+                var adapterName = adapterPath.Substring(adapterPath.LastIndexOf("/", StringComparison.Ordinal) + 1);
+                Log.Debug($"Using Bluetooth Adapter {adapterName}.");
 
-            var adapterPath = a.ObjectPath.ToString();
-            var adapterName = adapterPath.Substring(adapterPath.LastIndexOf("/", StringComparison.Ordinal) + 1);
-            Log.Debug($"Using Bluetooth Adapter {adapterName}.");
-
-            var devices = await a.GetDevicesAsync();
-            foreach (var device in devices)
-            {
-                var properties = await device.GetAllAsync();
-                var deviceDescription = await GetDeviceDescriptionAsync(device, properties);
-                Log.Debug(deviceDescription);
-                if (await CheckAndConnect(filter, device))
+                var devices = await a.GetDevicesAsync();
+                foreach (var device in devices)
                 {
-                    return device;
+                    var properties = await device.GetAllAsync();
+                    var deviceDescription = await GetDeviceDescriptionAsync(device, properties);
+                    Log.Debug(deviceDescription);
+                    if (await CheckAndConnect(filter, device))
+                    {
+                        return device;
+                    }
                 }
+
+                Log.Debug($"{devices.Count} device(s) found ahead of scan.");
+
+                // Scan for more devices.
+                Log.Debug($"Scanning for {timeout.Value.Seconds} seconds...");
+
+                IDevice1? device1 = null;
+                var tokenSource = new CancellationTokenSource();
+                using (await a.WatchDevicesAddedAsync(async device =>
+                {
+                    var deviceProperties = await device.GetAllAsync();
+                    var deviceDescription = await GetDeviceDescriptionAsync(device, deviceProperties);
+                    Log.Debug($"[NEW] {deviceDescription}");
+                    if (!await CheckAndConnect(filter, device)) return;
+                    device1 = device;
+                    Log.Debug("Stopping scan...");
+                    tokenSource.Cancel();
+                }))
+                {
+                    Log.Debug("Starting scanning...");
+                    await a.StartDiscoveryAsync();
+                    await Task.Delay(TimeSpan.FromSeconds(timeout.Value.Seconds), tokenSource.Token);
+                    await a.StopDiscoveryAsync();
+                    Log.Debug("Scan complete.");
+                }
+
+                if (device1 != null)
+                {
+                    return device1;
+                }
+
+                Log.Warning("Device not found.");
+            }
+            catch (Tmds.DBus.DBusException e)
+            {
+                Log.Warning($"Error: {e.ErrorMessage}.");
             }
 
-            Log.Debug($"{devices.Count} device(s) found ahead of scan.");
-
-            // Scan for more devices.
-            Log.Debug($"Scanning for {timeout.Value.Seconds} seconds...");
-
-            IDevice1? device1 = null;
-            var tokenSource = new CancellationTokenSource();
-            using (await a.WatchDevicesAddedAsync(async device =>
-            {
-                var deviceProperties = await device.GetAllAsync();
-                var deviceDescription = await GetDeviceDescriptionAsync(device, deviceProperties);
-                Log.Debug($"[NEW] {deviceDescription}");
-                if (!await CheckAndConnect(filter, device)) return;
-                device1 = device;
-                Log.Debug("Stopping scan...");
-                tokenSource.Cancel();
-            }))
-            {
-                Log.Debug("Starting scanning...");
-                await a.StartDiscoveryAsync();
-                await Task.Delay(TimeSpan.FromSeconds(timeout.Value.Seconds), tokenSource.Token);
-                await a.StopDiscoveryAsync();
-                Log.Debug("Scan complete.");
-            }
-
-            if (device1 != null)
-            {
-                return device1;
-            }
-
-            Log.Warning("Device not found.");
             return null;
         }
 
@@ -159,7 +167,6 @@ namespace bledevice
             var ret = new BleDevice(dev);
             await ret.Initialize();
             return ret;
-
         }
 
         private static async Task<bool> ShouldConnect(ScanFilter filter, IDevice1 device)
@@ -232,7 +239,6 @@ namespace bledevice
         public async Task Disconnect()
         {
             await _device.DisconnectAsync();
-            await _device.WaitForPropertyValueAsync("Connected", value: false, TIMEOUT);
             Log.Debug($"{this} disconnected.");
         }
 

@@ -11,39 +11,25 @@ namespace bledevice.PoweredUp.Hubs
     /// <summary>
     /// Technic Medium Hub (Control+ Hub), Part ID 22127
     /// </summary>
+#pragma warning disable 8603  
     public class TechnicMediumHub : LPF2Hub
     {
         #region Properties
 
         /// <summary>
-        /// Built-in Current Sensor
-        /// </summary>
-        public CurrentSensor CurrentSensor { get; private set; }
-
-        /// <summary>
-        /// Built-in Voltage Sensor
-        /// </summary>
-        public VoltageSensor VoltageSensor { get; private set; }
-
-        /// <summary>
         /// Built-in Gyro Sensor
         /// </summary>
-        public GyroSensor GyroSensor { get; private set; }
+        public GyroSensor GyroSensor => _devices[98] as GyroSensor;
 
         /// <summary>
         /// Built-in Accelerometer
         /// </summary>
-        public Accelerometer Accelerometer { get; private set; }
+        public Accelerometer Accelerometer => _devices[97] as Accelerometer;
 
         /// <summary>
         /// Built-in TiltSensor
         /// </summary>
-        public TechnicMediumHubTiltSensor TiltSensor { get; private set; }
-
-        /// <summary>
-        /// Integrated RGD LED Light
-        /// </summary>
-        public HubLED LED { get; private set; }
+        public TechnicMediumHubTiltSensor TiltSensor => _devices[99] as TechnicMediumHubTiltSensor;
 
         #endregion
 
@@ -67,16 +53,6 @@ namespace bledevice.PoweredUp.Hubs
             PortIdMap[99] = "TILT_SENSOR";
         }
 
-        protected override async Task SetupHub()
-        {
-            Log.Information("Technic Medium Hub connected");
-            LED = _devices[50] as HubLED;
-            CurrentSensor = _devices[59] as CurrentSensor;
-            VoltageSensor = _devices[60] as VoltageSensor;
-            Accelerometer = _devices[97] as Accelerometer;
-            GyroSensor = _devices[98] as GyroSensor;
-            TiltSensor = _devices[99] as TechnicMediumHubTiltSensor;
-        }
         #region Factory
 
         /// <summary>

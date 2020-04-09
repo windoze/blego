@@ -8,7 +8,7 @@ namespace bledevice.PoweredUp.Devices
     /// <summary>
     /// Tacho Motor with PID control of speed/angle
     /// </summary>
-    public class AbsoluteMotor : TachoMotor
+    public class AbsoluteMotor : TachoMotor, ISensor
     {
         private const byte MODE_ABSOLUTE = 0x03;
 
@@ -17,8 +17,8 @@ namespace bledevice.PoweredUp.Devices
             Mode = MODE_ABSOLUTE;
         }
 
-        public byte DefaultMode => MODE_ABSOLUTE; // Absolute
-        public bool AutoSubscribe => false;
+        byte ISensor.DefaultMode => MODE_ABSOLUTE; // Absolute
+        bool ISensor.AutoSubscribe => false;
 
         public delegate Task AbsoluteHandler(AbsoluteMotor sender, int angle);
 
